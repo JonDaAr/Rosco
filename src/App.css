@@ -1,0 +1,74 @@
+.rosco-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  border-radius: 50%;
+}
+
+.letra {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.pregunta-box {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  border: aliceblue;
+  width: 80%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+p{
+  color: seagreen;
+}
+.letra.correcta {
+  background-color: #4caf50; /* verde */
+  color: white;
+}
+
+.letra.incorrecta {
+  background-color: #f44336; /* rojo */
+  color: white;
+}
+
+.pregunta-box {
+  margin-top: 20px;
+}
+
+.resumen {
+  margin-top: 30px;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  width: fit-content;
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .rosco-container{
+    width: 200px;
+  }
+  .letra{
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+  }
+}
