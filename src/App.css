@@ -2,7 +2,7 @@
   position: relative;
   width: 400px;
   height: 400px;
-  margin: 50px auto;
+    margin: 0px auto;
   border-radius: 50%;
 }
 
@@ -12,8 +12,8 @@
   left: 50%;
   width: 40px;
   height: 40px;
-  background-color: #2563eb;
-  color: white;
+  background-color: #FFFACD;
+  color: rgb(85, 119, 212);
   font-weight: bold;
   font-size: 18px;
   border-radius: 50%;
@@ -25,18 +25,38 @@
 }
 
 .pregunta-box {
-  margin-top: 20px;
   text-align: center;
-  padding: 20px;
   border-radius: 12px;
-  border: aliceblue;
+  border: #FF6F00;
   width: 80%;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
+h2{
+  color: #212225;
+}
+.respuesta{
+  color: #ff7700;
+  margin-top: 10px;
+  background-color: white;
+  padding: 10px;
+  width: 60%;
+  border: #89CFF0 solid 0.5px;
+  border-radius: 10px;
+}
+.button-resp{
+  margin-top: 1px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.texto-box{
+  border-bottom: #89CFF0 solid 0.5px;
+  background: #FFDAB9;
+}
 p{
-  color: seagreen;
+  color: #212225;
 }
 .letra.correcta {
   background-color: #4caf50; /* verde */
@@ -60,6 +80,17 @@ p{
   width: fit-content;
   margin-inline: auto;
   text-align: center;
+}
+
+
+.img-container{
+  width: 100%;
+  margin: 0;
+  padding-left: 10px;
+  display: flex;
+  justify-content: end;
+  width: 80%;
+  height: 50px;
 }
 
 @media (max-width: 768px) {

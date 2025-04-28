@@ -77,18 +77,23 @@ function App() {
           );
         })}
       </div>
-
+      <div className="img-container">
+      <img src="/src/assets/Erizo.png" alt="erizo" />
+      </div>
       {preguntaActual && (
         <div className="pregunta-box">
+          <div className="texto-box">
           <h2>Letra: {preguntaActual.palabra[0].toUpperCase()}</h2>
           <p>{preguntaActual.definition}</p>
+          </div>
           <input
+            className="respuesta"
             type="text"
             value={respuesta}
             onChange={(e) => setRespuesta(e.target.value)}
             placeholder="Tu respuesta"
           />
-          <button onClick={handleVerificar}>Verificar</button>
+          <button className="button-resp" onClick={handleVerificar}>Verificar</button>
         </div>
       )}
 

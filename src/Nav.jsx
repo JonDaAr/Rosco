@@ -13,7 +13,6 @@ const toggleMenu = () => {
     return(
         <>
         <nav>
-            <img src="/src/assets/Erizo.png" alt="erizo" />
             <button className='hamburguesa' onClick={toggleMenu}>&#9776;</button>
             <div className={`lista ${menuAbierto ? 'mostrar' : ''}`}>
                 <ol>
