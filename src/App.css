@@ -78,7 +78,15 @@ p{
 .pregunta-box {
   margin-top: 20px;
 }
-
+.modal-resumen{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 200;
+}
 .resumen {
   position: fixed;
   top: 3.5%;
@@ -89,7 +97,7 @@ p{
   padding: 20px;
   border-radius: 10px;
   width: fit-content;
-  height: 80vh;
+  height: 85vh;
   margin-inline: auto;
   text-align: center;
   margin-bottom: 1rem;
