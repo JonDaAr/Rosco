@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRef } from "react";
 import data from "../public/palabras.json";
 import "./App.css";
+import Erizo from "../public/Erizo.png";
 
 function App() {
   const letters = "GHIJKLNÑMOPQRSTUVWXYZABCDEF".split("");
@@ -190,7 +191,7 @@ const reiniciarJuego = () => {
       </div>
 
       <div className="img-container" >
-        <img src="/assets/Erizo.png" alt="erizo" onClick={mostrarCuadroAyuda} />
+        <img src={Erizo} alt="erizo" onClick={mostrarCuadroAyuda} />
       </div>
 
       {mostrarPreguntaAyuda && (
