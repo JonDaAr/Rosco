@@ -190,7 +190,7 @@ const reiniciarJuego = () => {
       </div>
 
       <div className="img-container" >
-        <img src="/src/assets/Erizo.png" alt="erizo" onClick={mostrarCuadroAyuda} />
+        <img src="/assets/Erizo.png" alt="erizo" onClick={mostrarCuadroAyuda} />
       </div>
 
       {mostrarPreguntaAyuda && (
