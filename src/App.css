@@ -1,6 +1,9 @@
 .rosco-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  width: 400px;
+  width: 100%;
   height: 400px;
     margin: 0px auto;
   border-radius: 50%;
@@ -9,9 +12,8 @@
 .letra {
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #FFFACD;
   color: rgb(85, 119, 212);
   font-weight: bold;
@@ -52,6 +54,7 @@ h2{
 }
 
 .texto-box{
+  padding: 0 5px;
   border-bottom: #89CFF0 solid 0.5px;
   background: #FFDAB9;
 }
@@ -92,14 +95,33 @@ p{
   width: 80%;
   height: 50px;
 }
+.reloj {
+  color: #ff7700;
+  position: absolute;
+  top: 40%;
+  font-size: 2rem;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 10;
+  font-family: 'fantasy';
+}
+.button-pasa{
+  position: absolute;
+  top: 60%;
+  font-size: 1rem;
+  border-radius: 10px;
+  background: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 10;
+}
 
 @media (max-width: 768px) {
-  .rosco-container{
-    width: 200px;
-  }
   .letra{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     font-size: 13px;
   }
 }
