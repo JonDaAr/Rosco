@@ -161,9 +161,6 @@ const reiniciarJuego = () => {
           {Math.floor(segundos / 60)}:
           {(segundos % 60).toString().padStart(2, "0")}
         </div>
-        <button className="button-pasa" onClick={mostrarSiguientePreguntaDisponible}>
-            Pasa Palabra
-          </button>
         {letters.map((letra, index) => {
           const total = letters.length;
           const angle = (360 / total) * index;
@@ -240,9 +237,14 @@ const reiniciarJuego = () => {
           <button className="button-resp" onClick={handleVerificar}>
             Verificar
           </button>
-
+          <div className="pasa-container">
+          <button className="button-pasa" onClick={mostrarSiguientePreguntaDisponible}>
+            Pasa Palabra
+          </button>  
+          </div>
         </div>
       )}
+      
 
       {juegoTerminado && (
         <div className="resumen">
@@ -250,6 +252,9 @@ const reiniciarJuego = () => {
           <p>⏱️ Tiempo total: {Math.floor(tiempoFinal / 60)}:{(tiempoFinal % 60).toString().padStart(2, "0")}</p>
           <p>✅ Correctas: {correctas}</p>
           <p>❌ Incorrectas: {incorrectas}</p>
+          <button className="button-nuevo" onClick={reiniciarJuego}>
+            Reiniciar Juego
+          </button>
 
           {incorrectasDetalles.length > 0 && (
             <>
@@ -263,11 +268,10 @@ const reiniciarJuego = () => {
               </ul>
             </>
           )}
-          <button className="button-nuevo" onClick={reiniciarJuego}>
-            Reiniciar Juego
-          </button>
+          
         </div>
       )}
+      
     </>
   );
 }

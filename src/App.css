@@ -36,6 +36,7 @@
   margin-right: auto;
 }
 h2{
+  margin: 0;
   color: #212225;
 }
 .respuesta{
@@ -49,6 +50,7 @@ h2{
 }
 .button-resp{
   margin-top: 1px;
+  margin-left: 2px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -78,16 +80,44 @@ p{
 }
 
 .resumen {
+  position: fixed;
+  top: 3.5%;
+  left: 22%;
   margin-top: 30px;
   background: #FFDAB9;
   color: #212225;
   padding: 20px;
   border-radius: 10px;
   width: fit-content;
+  height: 80vh;
   margin-inline: auto;
   text-align: center;
   margin-bottom: 1rem;
+  z-index: 100;
+  overflow-y: auto;
 }
+
+.resumen::-webkit-scrollbar {
+  width:7px; /* ancho de la barra */
+}
+
+.resumen::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color del fondo */
+  border-radius: 10px;
+}
+
+.resumen::-webkit-scrollbar-thumb {
+  background: #89CFF0; /* color del scroll */
+  border-radius: 10px;
+}
+
+.resumen::-webkit-scrollbar-thumb:hover {
+  background: #89CFF0; /* color al pasar el mouse */
+}
+
+
+
+
 .incorrectas{
   text-align: left;
 }
@@ -106,16 +136,22 @@ p{
   color: #ff7700;
   position: absolute;
   top: 40%;
-  font-size: 2rem;
+  font-size: 4rem;
   padding: 10px 20px;
   text-align: center;
   font-weight: bold;
   z-index: 10;
   font-family: 'fantasy';
 }
+.pasa-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
 .button-pasa{
-  position: absolute;
-  top: 60%;
+  margin-top: 5px;
   font-size: 1rem;
   background-color: #89CFF0;
   color: white;
