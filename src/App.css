@@ -94,12 +94,14 @@ p{
   transform: translate(-50%, -50%);
   background: #FFDAB9;
   color: #212225;
-  padding: 20px;
+  padding: 5px;
   border-radius: 10px;
+  max-width: 80vw;
+  white-space: nowrap;
   width: fit-content;
   max-height: 85vh;
-  text-align: center;
   overflow-y: auto;
+  text-align: center;
   z-index: 100;
 }
 
