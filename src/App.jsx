@@ -250,7 +250,7 @@ const reiniciarJuego = () => {
         <div className="modal-resumen">
 
         <div className="resumen">
-          <h2>🎉 Juego terminado 🎉</h2>
+          <h2>Juego terminado</h2>
           <p>⏱️ Tiempo total: {Math.floor(tiempoFinal / 60)}:{(tiempoFinal % 60).toString().padStart(2, "0")}</p>
           <p>✅ Correctas: {correctas}</p>
           <p>❌ Incorrectas: {incorrectas}</p>
