@@ -210,19 +210,27 @@ p{
   background-color: #0529f8; 
 }
 
+
 .modal-ayuda {
-  position: fixed;
-  top: 30%;
-  left: 17%;
-  width: 200px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 50%;
+  left: 45%;
+  transform: translate(-40%, -50%);
+  width: fit-content;
   background: white;
   padding: 20px;
   border: 2px solid #333;
   border-radius: 10px;
   z-index: 999;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
 }
 .modal-ayuda button {
+  margin-top: 5px;
   width: 80px;
   height: 30px;
   background: #0529f8;
