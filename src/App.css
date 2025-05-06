@@ -74,6 +74,11 @@ p{
   background-color: #f44336; /* rojo */
   color: white;
 }
+.letra.pasada {
+  background-color: #fffacd77; /* gris semi-transparente */
+  color: #0529f848;
+}
+
 
 .pregunta-box {
   margin-top: 20px;
@@ -219,8 +224,8 @@ p{
   flex-direction: column;
   top: 50%;
   left: 45%;
-  transform: translate(-40%, -50%);
-  width: fit-content;
+  transform: translate(-42%, -50%);
+  width: 350px;
   background: white;
   padding: 20px;
   border: 2px solid #333;

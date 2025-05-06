@@ -195,15 +195,17 @@ function App() {
           {mostrarPreguntaAyuda && (
             <div className="modal-ayuda">
               <p>¿Necesitas una ayuda? u.u</p>
+              <div>
               <button onClick={aceptarAyuda}>Sí</button>
               <button onClick={rechazarAyuda}>No</button>
+            </div>
             </div>
           )}
 
           {mostrarAyuda && (
             <div className="modal-ayuda">
               <p>La palabra se encuentra en el diccionario y empieza con la letra seleccionada.</p>
-              <div style={{ position: "relative", height: "60px" }}>
+              <div style={{ width:"100%", position: "relative", height: "60px" }}>
                 <button onClick={() => setMostrarAyuda(false)}>Gracias :D</button>
                 <button
                   style={{
