@@ -79,7 +79,6 @@ p{
   color: #0529f848;
 }
 
-
 .pregunta-box {
   margin-top: 20px;
 }
@@ -243,6 +242,25 @@ p{
   border: #0529f8 solid 2px;
   border-radius: 5px; 
   margin-right: 5px;
+}
+/* modo nieve */
+.snow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -10;
+  animation: snowFall 10s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes snowFall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
 }
 
 

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Erizo from "../public/Erizo.png";
+import OsoPolar from "../public/OsoPolar.png";
 
 function App() {
   const letters = "GHIJKLNÑMOPQRSTUVWXYZABCDEF".split("");
@@ -122,6 +123,12 @@ function App() {
     let i = letraActualIndex;
     const total = letters.length;
 
+    const letraActual = letters[i];
+    if (!estadoLetras[letraActual]) {
+      setEstadoLetras((prev) => ({ ...prev, [letraActual]: "pasada" }));
+    }
+
+
     for (let count = 0; count < total; count++) {
       i = (i + 1) % total;
       const letra = letters[i];
@@ -146,6 +153,8 @@ function App() {
 
   return (
     <>
+    {modo === "polar" && <div className="snow"></div>}
+
       {!modo && (<div className="container-modal">
         <div className="modal-ayuda">
           <h2>Selecciona un modo de juego</h2>
@@ -168,28 +177,33 @@ function App() {
               const angle = (360 / letters.length) * index;
               const estado = estadoLetras[letra];
               return (
-                <div
-                  key={index}
-                  className={`letra ${estado}`}
-                  style={{
-                    transform: `rotate(${angle}deg) translate(150px) rotate(-${angle}deg)`,
-                  }}
-                  onClick={() => {
-                    if (!estado) {
-                      setPreguntaActual(preguntasPorLetra[letra] || null);
-                      setLetraActualIndex(index);
-                      setJuegoIniciado(true);
-                    }
-                  }}
-                >
-                  {letra}
-                </div>
+<div
+  key={index}
+  className={`letra ${estado || ""}`}
+  style={{
+    transform: `rotate(${angle}deg) translate(150px) rotate(-${angle}deg)`,
+  }}
+  onClick={() => {
+    if (!estado) {
+      setPreguntaActual(preguntasPorLetra[letra] || null);
+      setLetraActualIndex(index);
+      setJuegoIniciado(true);
+    }
+  }}
+>
+  {letra}
+</div>
+
               );
             })}
           </div>
 
           <div className="img-container">
-            <img src={Erizo} alt="erizo" onClick={mostrarCuadroAyuda} />
+          <img
+  src={modo === "polar" ? OsoPolar : Erizo}
+  alt={modo === "polar" ? "oso polar" : "erizo"}
+  onClick={mostrarCuadroAyuda}
+/>
           </div>
 
           {mostrarPreguntaAyuda && (
