@@ -4,7 +4,7 @@ import Erizo from "../public/Erizo.png";
 import OsoPolar from "../public/OsoPolar.png";
 
 function App() {
-  const letters = "GHIK".split("");
+  const letters = "GHIKLNÑMNOPQRSTUVWXYZABCDEF".split("");
   const [modo, setModo] = useState(""); // <<-- NUEVO
   const [data, setData] = useState([]);
   const [preguntasPorLetra, setPreguntasPorLetra] = useState({});
