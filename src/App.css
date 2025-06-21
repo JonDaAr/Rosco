@@ -340,8 +340,6 @@ p{
     background-position: 0 1000px;
   }
 }
-
-
 @media (max-width: 768px) {
   .letra{
     width: 30px;
@@ -350,7 +348,6 @@ p{
   }
   .texto-victoria {
     font-size: 2rem;
-
     top: 15%;
     left: 30%;
   }
