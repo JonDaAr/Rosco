@@ -4,7 +4,7 @@ import Erizo from "../public/Erizo.png";
 import OsoPolar from "../public/OsoPolar.png";
 
 function App() {
-  const letters = "GHIJKLNÑMOPQRSTUVWXYZABCDEF".split("");
+  const letters = "GHIK".split("");
   const [modo, setModo] = useState(""); // <<-- NUEVO
   const [data, setData] = useState([]);
   const [preguntasPorLetra, setPreguntasPorLetra] = useState({});
@@ -79,6 +79,18 @@ function App() {
     return () => clearInterval(intervalo);
   }, [juegoIniciado, juegoTerminado]);
 
+useEffect(() => {
+  const respondidas = Object.values(estadoLetras).filter(
+    (estado) => estado === "correcta" || estado === "incorrecta"
+  ).length;
+
+  if (respondidas === letters.length && !juegoTerminado) {
+    setJuegoTerminado(true);
+    setTiempoFinal(segundos);
+  }
+}, [estadoLetras, juegoTerminado, segundos]);
+
+
   const reiniciarJuego = () => {
     if (!roscoRef.current) return;
     roscoRef.current.classList.add("girar-rosco");
@@ -98,45 +110,48 @@ function App() {
     });
   };
 
-  const handleVerificar = () => {
-    if (!preguntaActual) return;
-    const correcta = preguntaActual.palabra.toLowerCase().trim();
-    const ingresada = respuesta.toLowerCase().trim();
-    const resultado = correcta === ingresada ? "correcta" : "incorrecta";
+ const handleVerificar = () => {
+  if (!preguntaActual) return;
+  const correcta = preguntaActual.palabra.toLowerCase().trim();
+  const ingresada = respuesta.toLowerCase().trim();
+  const resultado = correcta === ingresada ? "correcta" : "incorrecta";
 
-    const letra = preguntaActual.palabra[0].toUpperCase();
-    setEstadoLetras((prev) => {
-      const nuevoEstado = { ...prev, [letra]: resultado };
-      if (Object.keys(nuevoEstado).length === letters.length) {
-        setJuegoTerminado(true);
-        setTiempoFinal(segundos);
-      }
-      return nuevoEstado;
-    });
+  const letra = letters[letraActualIndex];
 
-    setRespuesta("");
-    setPreguntaActual(null);
+  setEstadoLetras((prev) => {
+    const nuevoEstado = { ...prev, [letra]: resultado };
+    return nuevoEstado;
+  });
+
+  setRespuesta("");
+  setPreguntaActual(null);
+
+  setTimeout(() => {
     mostrarSiguientePreguntaDisponible();
-  };
+  }, 100);
+};
 
   const mostrarSiguientePreguntaDisponible = () => {
     let i = letraActualIndex;
     const total = letters.length;
 
     const letraActual = letters[i];
-    if (!estadoLetras[letraActual]) {
-      setEstadoLetras((prev) => ({ ...prev, [letraActual]: "pasada" }));
-    }
+    setEstadoLetras((prev) => {
+  if (!prev[letraActual]) {
+    return { ...prev, [letraActual]: "pasada" };
+  }
+  return prev;
+});
 
 
     for (let count = 0; count < total; count++) {
       i = (i + 1) % total;
       const letra = letters[i];
-      if (!estadoLetras[letra]) {
-        setPreguntaActual(preguntasPorLetra[letra] || null);
-        setLetraActualIndex(i);
-        return;
-      }
+      if (!estadoLetras[letra] || estadoLetras[letra] === "pasada") {
+  setPreguntaActual(preguntasPorLetra[letra] || null);
+  setLetraActualIndex(i);
+  return;
+}
     }
 
     setPreguntaActual(null);
@@ -230,7 +245,7 @@ function App() {
                   }}
                   onClick={moverBotonNo}
                 >
-                  Puto >:(
+                  Puto :(
                 </button>
               </div>
             </div>
@@ -259,32 +274,45 @@ function App() {
           )}
 
           {juegoTerminado && (
-            <div className="modal-resumen">
-              <div className="resumen">
-                <h2>Juego terminado</h2>
-                <p>⏱️ Tiempo total: {Math.floor(tiempoFinal / 60)}:{(tiempoFinal % 60).toString().padStart(2, "0")}</p>
-                <p>✅ Correctas: {correctas}</p>
-                <p>❌ Incorrectas: {incorrectas}</p>
-                <button className="button-nuevo" onClick={reiniciarJuego}>Reiniciar Juego</button>
-                {incorrectasDetalles.length > 0 && (
-                  <>
-                    <h3 className="incorrectas">Palabras incorrectas:</h3>
-                    <ul className="incorrectas">
-                      {incorrectasDetalles.map((item) => (
-                        <li key={item.letra}>
-                          Letra {item.letra} era: <strong>{item.correcta}</strong>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-              </div>
-            </div>
-          )}
+  <div className={`modal-resumen ${correctas === letters.length ? "victoria" : ""}`}>
+    
+    <div className="resumen">
+      <h2>Juego terminado</h2>
+      <p>⏱️ Tiempo total: {Math.floor(tiempoFinal / 60)}:{(tiempoFinal % 60).toString().padStart(2, "0")}</p>
+      <p>✅ Correctas: {correctas}</p>
+      <p>❌ Incorrectas: {incorrectas}</p>
+      <button className="button-nuevo" onClick={reiniciarJuego}>Reiniciar Juego</button>
+      {incorrectasDetalles.length > 0 && (
+        <>
+          <h3 className="incorrectas">Palabras incorrectas:</h3>
+          <ul className="incorrectas">
+            {incorrectasDetalles.map((item) => (
+              <li key={item.letra}>
+                Letra {item.letra} era: <strong>{item.correcta}</strong>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+
+    {correctas === letters.length && (
+  <div className="fuegos-artificiales">
+    <div className="explosion uno"></div>
+  <div className="explosion dos"></div>
+  <div className="explosion tres"></div>
+  <div className="explosion cuatro"></div>
+  <div className="explosion cinco"></div>
+    <h1 className="texto-victoria">🎉¡GANASTE!🎉</h1>
+  </div>
+)}
+
+  </div>
+)}
+
         </>
       )}
     </>
   );
 }
-
 export default App;
